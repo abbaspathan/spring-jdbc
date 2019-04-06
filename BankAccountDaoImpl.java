@@ -15,7 +15,6 @@ import com.capgemini.bankapp.util.DbUtil;
 public class BankAccountDaoImpl implements BankAccountDao {
 
 	Connection connection;
-
 	public BankAccountDaoImpl(Connection connection){
 		this.connection=connection;
 	}

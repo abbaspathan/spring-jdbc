@@ -11,22 +11,22 @@ import java.util.Properties;
 
 public class DbUtil {
 
-	private static String dburl="jdbc:mysql://localhost:3306/bankappdb";
-	private static String username="root";
-	private static String password="root";
+	private static String dburl;
+	private static String username;
+	private static String password;
+	private static String className;
 
 	static Connection connection;
-	
-	/*public static void staticMethod(Properties properties){
+
+	public static Connection getConnection(Properties properties) {
+			
+		className= properties.getProperty("classname");
 		dburl = properties.getProperty("dburl");
 		username = properties.getProperty("username");
 		password = properties.getProperty("password");
-	}*/
-
-	public static Connection getConnection() {
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(className);
 			if (connection == null) {
 				connection = DriverManager.getConnection(dburl, username, password);
 				connection.setAutoCommit(false);

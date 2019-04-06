@@ -2,6 +2,7 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns:context="http://www.springframework.org/schema/context"
    xmlns:util="http://www.springframework.org/schema/util"
+   xmlns:p="http://www.springframework.org/schema/p"
    xsi:schemaLocation="http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://www.springframework.org/schema/context
@@ -11,8 +12,8 @@
 
 	<util:properties id="myProperties" location="dbconfig.properties"/>
 
-	<bean id="connection" class="com.capgemini.bankapp.util.DbUtil" factory-method="getConnection">
-		
+	<bean id = "connection" class = "com.capgemini.bankapp.util.DbUtil" factory-method="getConnection">
+		<constructor-arg ref="myProperties" />
 	</bean>
 
 	<bean id = "bankAccountDaoImpl" class = "com.capgemini.bankapp.dao.impl.BankAccountDaoImpl">
